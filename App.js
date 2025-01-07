@@ -2,6 +2,7 @@ import { StyleSheet,View,Appearance } from 'react-native';
 import { PaperProvider,Text,Button, DefaultTheme } from 'react-native-paper';
 import * as React from 'react';
 import HourPicker from './components/HourPicker';
+import { TextInput } from "react-native-paper";
 
 export default function App() {
   const LightTheme = {
@@ -10,6 +11,7 @@ export default function App() {
       ...DefaultTheme.colors,
       foreground: "#5c6a72",
       background: "#fffbef",
+      red: "#f85552"
     }
   };
 
@@ -19,6 +21,7 @@ export default function App() {
       ...DefaultTheme.colors,
       background: "#272E33",
       foreground: "#d3c6aa",
+      red: "#e67e80",
     }
   }
 
@@ -34,11 +37,9 @@ export default function App() {
   return (
     <PaperProvider theme={theme}>
     <View style={[styles.container,{backgroundColor: theme.colors.background}]}>
-      <Text variant= 'headlineSmall' style={{color: theme.colors.foreground}}>When did you woke up today?</Text>
+      <Text variant= 'headlineMedium' style={{color: theme.colors.foreground}}>When did you woke up today?</Text>
+        <TextInput  placeholder="Pick the hour" placeholderTextColor={theme.colors.foreground} editable={false} style={{height: 40, width: 200}} mode="outlined" outlineColor={theme.colors.foreground} textColor={theme.colors.foreground} onPress={showModal} />
       <Button mode="elevated" textColor={theme.colors.background} onPress={showModal} buttonColor={theme.colors.foreground}>
-         Pick Hour
-      </Button>
-      <Button mode="elevated" disabled={true} textColor={theme.colors.background}  buttonColor={theme.colors.foreground}>
          Fix your sleep schedule
       </Button>
       <HourPicker visible={visible} setVisible={setVisible}/>
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 10,
+    gap: 30,
   },
 
 });
